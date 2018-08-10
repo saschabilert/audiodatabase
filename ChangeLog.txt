@@ -1,0 +1,26 @@
+-DatabaseGUI 263 function consoleCallback
+	statt disp nun evalin
+
+-DatabaseGUI 135 hConsole
+	String zu CWresults
+
+-loadDatabase 1 direction zu directory
+
+-TIMIT_MIT_Database alles richtig eingerueckt
+
+-TIMIT_MIT_Database 56-65 function loadDatabase
+	loadDatabase eingefuegt
+	und externes geloescht
+
+-TIMIT_MIT_Database 166-199 private methods
+	readDatabase eingefuegt
+	und externes geloescht
+
+-DatabaseGUI 247,251 und 259 STFTCallback
+	Visible off
+	position auf [400 400 640 448]
+	und visible on
+
+-DatabaseGUI Tooltipstrings hinzugefuegt
+
+-DatabaseGUI 176 'distribute' korrekt geschrieben

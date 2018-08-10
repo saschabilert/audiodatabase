@@ -1,0 +1,112 @@
+#Datenbank für den Zugriff auf die MIT/TIMIT-Datenbank erstellt in Matlab
+
+**Inhaltsangabe dieser README Datei:**
+1. Projektbeschreibung
+2. Was liegt wo?
+3. Benutzungsbeispiele
+4. Dependencies
+5. Installationshinweise
+6. Autoren
+7. Lizenzhinweise
+
+
+##1. Projektbeschreibung
+Dieses Programm verwaltet die gegebene MIT/TIMIT-Datenbank. Die MIT/TIMIT-Datenbank besteht aus englischsprachigen Sätzen. Sie werden von 16 verschiedenen Sprechern unterschiedlichen Geschlechts dargeboten. Zu jedem Sprecher liegen 10 verschiedene Sätze vor. Einige Sätze kommen mehrfach vor. Zur weiteren Unterscheidung der Sätze sind Kriterien wie das Satzkürzel (SentenceID), das Kürzel des Sprechers (Name), sein Geschlecht (Gender),
+die verwendeten Wörter (Words) und die vorkommenden Phoneme (Phonems) gegeben.
+
+Dieses Programm bietet eine Suchfunktion. Der Nutzer kann nach einzelnen Kriterien, oder einer Kombination mehrerer Kriterien suchen. Ausgegebene Suchergebnisse können direkt wiedergegeben werden. Die Darstellung erfolgt in einem Graphical User Interface (GUI).
+
+Zur grafischen Auswertung der Files verfügt dieses Programm über eine STFT (Short Time Fourier Transform) Funktion.
+
+
+##2. Was liegt wo
+
+Im Ordner *MFiles_TIMIT_MIT* liegen die Programmdateien und alle verwendeten Matlab Funktionen und Klassen.
+
+Im Ordner *TIMIT MIT* ist die Datenbank hinterlegt.
+
+
+##3. Benutzung und Beispiele
+
+###Handhabung
+Die Datenbank bietet folgende Suchparameter:
+* Kürzel des Sprechers
+* Geschlecht des Sprechers
+* Satz ID
+* Verwendete Wörter
+* Verwendete Phoneme
+
+Im **Eingabefeld** kann der Nutzer den Pfad zur MIT/TMIT Datenbank angeben. Wenn dieser nicht angegeben wird, verwendet das Programm eine DefaultDirectory (../TIMIT MIT/). Der Pfad sollte bei der im Kapitel 5 beschriebenen Installation bereits korrekt gesetzt sein. Das korrekte Laden  der Datenbank wird über die Ausgabe **"Database successfully loaded"** bestätigt. Sollte ein Fehler vorliegen erscheint die Statusmeldung **"Files not found"**.
+
+Der Nutzer kann nach einzelnen Parametern suchen, oder um die Suche zu spezifizieren Kombinationen mehrerer Parameter verwenden. Die Auswahl von **"Person"** und **"Gender"** sind mittels eines Dropdown Feldes möglich. Bei den Suchparametern **"Words"** und **"Phonems"** ist eine Mehrfachnennung möglich. Die Suchbegriffe müssen hier durch ein Komma getrennt werden. Eine Suche nach Wortfragmenten ist nicht möglich. Die Suche wird über den Button **"Search"** durchgeführt.
+
+Die Suchergebnisse werden im ListBox-Fenster des GUI dargestellt. Der Nutzer kann hier einzelne Sätze auswählen und sie mittels des Buttons **"Play/Pause/Resume"** wiedergeben bzw. pausieren. Mit dem Button **"Stop"** kann die Wiedergabe abgebrochen werden.
+
+Mit dem Button **"STFT"** wird eine Short Time Fourier Transform durchgeführt und grafisch in einem separaten Fenster dargestellt. In ihr kann man die Sätze auf fehlerhafte Bereiche überprüfen. Das Rauschen wird hier in der Regel als Balken mit einer hohen gleichmäßig Leistungsdichte über den gesammten Frequenzbereich dargestellt.
+
+Mittels des **"CWresults"** Buttons kann der Anwender die gefundenen Ergebnisse im Base-Workspace in das Cell Array *"results"* speichern. Die Ergebnisse werden außerdem über die Konsole ausgegeben.
+
+
+###Beispiel
+1. **Beispiel für SentenceID**: `sa2`
+
+2. **Beispiele für die Mehfachnennung**:
+`she,wash,suit`; `she , wash , suit`;`she, wash, suit`;
+
+3. **Beispiel Words**:
+Bei der Suche nach dem Wort "I" werden nur Ergebnisse angezeigt, die das Wort "I" enthalten. Wörter die unter anderem ein "i" beinhalten werden nicht angezeigt.
+
+
+##4. Dependencies
+Dieses Programm wurde erstellt und getest mit MathWorks Matlab in den Versionen:
+* Matlab 2014b
+* Matlab 2015a
+
+Das Programm umfasst folgende notwendige Files:
+* AudioPlayer.m (Class)
+* AudioPlayerTest.m (Script)
+* DatabaseGUI.m (Class)
+* STFT.m (Function)
+* Windowing.m (Function)
+* TMIT_MIT_Database.m (Class)
+* TMIT_MIT_DatabaseTest.m (Script)
+
+##5. Installationshinweise
+Dieses Programm setzt die Installation von MathWorks Matlab **2014b** oder **2015a** voraus.
+
+Installationsreihenfolge
+
+1.  Matlab installieren
+2.  Alle notwendigen Matlab Dateien (siehe Punkt 4) sollten sich gemeinsam mit den TIMIT MIT Ordner in einem Verzeichnis befinden
+3.  Via Matlab das erstellte Verzeichnis öffnen
+4.  In den Ordner MFILES_TIMIT_MIT navigieren
+5.  In der Konsole den Befehl `TIMIT_MIT_Database();` eingeben um das GUI zu starten
+
+Informationen zum Umgang mit dem Programm finden sich im Kapitel **3. Benutzungsbeispiele**
+
+Jede Klasse verfügt über einen Hilfe-Text. Handles im GUI besitzen Tool-Tipp Fenster.
+
+
+##6. Autoren
+
+Dieses Programm wurde erstellt von:  
+
+    Sascha Bilert         6009917  
+    Eike Claaßen          6010410  
+    Jan-Michel Grüttgen   6010074
+
+
+
+##7. Lizenzhinweise
+
+Copyright (c) 2015 Sascha Bilert, Eike Claaßen, Jan-Michel Grüttgen  
+
+Hiermit wird unentgeltlich jeder Person, die eine Kopie der Software und der zugehörigen Dokumentationen (die "Software") erhält,
+die Erlaubnis erteilt, sie uneingeschränkt zu benutzen, inklusive und ohne Ausnahme dem Recht, sie zu verwenden, kopieren, ändern,
+fusionieren, verlegen, verbreiten, unterlizenzieren und/oder zu verkaufen, und Personen, die diese Software erhalten, diese Rechte
+zu geben, unter den folgenden Bedingungen:
+Der obige Urheberrechtsvermerk und dieser Erlaubnisvermerk sind in allen Kopien oder Teilkopien der Software beizulegen.
+DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE BEREITGESTELLT, EINSCHLIESSLICH DER GARANTIE ZUR BENUTZUNG FÜR
+DEN VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK SOWIE JEGLICHER RECHTSVERLETZUNG, JEDOCH NICHT DARAUF BESCHRÄNKT. IN KEINEM FALL SIND
+DIE AUTOREN ODER COPYRIGHTINHABER FÜR JEGLICHEN SCHADEN ODER SONSTIGE ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER ERFÜLLUNG EINES
+VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG MIT DER SOFTWARE ODER SONSTIGER VERWENDUNG DER SOFTWARE ENTSTANDEN.
